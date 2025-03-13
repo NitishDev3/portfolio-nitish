@@ -31,7 +31,7 @@ const ProjectDetails = ({ project, onClose }) => {
           onClick={onClose}
           className="absolute -top-3 -right-3 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors"
         >
-          <span className="text-xl font-bold">×</span>
+          <span className="text-xl font-bold">X</span>
         </button>
 
         {/* Project Title */}

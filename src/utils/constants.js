@@ -1,3 +1,6 @@
+import bankpic from "./hey-bank.png";
+
+
 export const skills = [
     // Front-End Development
     { name: "React JS", icon: "https://static-00.iconduck.com/assets.00/react-icon-2048x2048-o8k3ymqa.png" },
@@ -41,10 +44,10 @@ export const projects = [
     },
     {
         title: "Hey Bank",
-        description: "A dynamic customer banking system with intuitive UI and smooth animations, crafted using React and enhanced with Framer Motion for a delightful user experience.",
-        image: "project2.png",
-        link: "https://example.com/project2",
-        techStack: ["React", "Framer Motion"],
+        description: "A dynamic customer banking system with intuitive UI and smooth animations, crafted using MERN and enhanced with Tailwind for a delightful user experience.",
+        image: bankpic,
+        link: "https://customer-online-banking.vercel.app/",
+        techStack: ["React", "Tailwind CSS", "Redux", "MERN"],
     },
     {
         title: "Connectify",

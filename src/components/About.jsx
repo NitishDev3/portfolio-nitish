@@ -8,7 +8,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="h-screen bg-gray-100 flex flex-col items-center justify-center"
+      className="h-screen w-full bg-gray-100 flex flex-col items-center justify-center"
     >
       <div className="text-center">
         <motion.h2

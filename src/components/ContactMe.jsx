@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const ContactMe = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        process.env.EMAILJS_SERVICE_ID, // Replace with your EmailJS Service ID
+        process.env.EMAILJS_TEMPLATE_ID, // Replace with your EmailJS Template ID
+        form.current,
+        process.env.EMAILJS_PUBLIC_KEY // Replace with your EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          alert("Message sent successfully!");
+          form.current.reset(); // Reset the form after successful submission
+        },
+        (error) => {
+          alert("Failed to send the message. Please try again.");
+        }
+      );
+  };
+
   return (
     <section
       id="contact"
@@ -9,7 +33,6 @@ const ContactMe = () => {
     >
       <div className="w-full max-w-4xl mx-auto">
         <div className="text-center">
-          {/* Heading with Animation */}
           <motion.h2
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -19,14 +42,19 @@ const ContactMe = () => {
             Contact Me
           </motion.h2>
 
-          {/* Form with Animation */}
           <motion.form
+            ref={form}
+            onSubmit={sendEmail}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, type: "spring", stiffness: 100 }}
+            transition={{
+              duration: 1,
+              delay: 0.5,
+              type: "spring",
+              stiffness: 100,
+            }}
             className="mt-12 w-full max-w-md mx-auto bg-gray-700 p-8 rounded-xl shadow-2xl"
           >
-            {/* Name Input */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -34,12 +62,13 @@ const ContactMe = () => {
             >
               <input
                 type="text"
+                name="from_name"
                 placeholder="Your Name"
                 className="w-full p-3 mb-6 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </motion.div>
 
-            {/* Email Input */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -47,25 +76,27 @@ const ContactMe = () => {
             >
               <input
                 type="email"
+                name="from_email"
                 placeholder="Your Email"
                 className="w-full p-3 mb-6 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
               />
             </motion.div>
 
-            {/* Message Textarea */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.1 }}
             >
               <textarea
+                name="message"
                 placeholder="Your Message"
                 className="w-full p-3 mb-6 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 rows="5"
+                required
               ></textarea>
             </motion.div>
 
-            {/* Submit Button */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}

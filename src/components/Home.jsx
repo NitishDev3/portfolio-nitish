@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -12,7 +12,29 @@ const Home = () => {
 
   const headlines = ["Front End Developer", "MERN Stack Developer"];
 
+  const [isInView, setIsInview] = useState(false);
+  const typingRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInview(true);
+          } else {
+            setIsInview(false);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(typingRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const handleTyping = () => {
+    if(!isInView) return;
     const currentHeadline = headlines[loopNum % headlines.length];
     const updatedText = isDeleting
       ? currentHeadline.substring(0, text.length - 1)
@@ -38,7 +60,8 @@ const Home = () => {
   return (
     <section
       id="home"
-      className="h-screen bg-black flex items-center justify-center"
+      className="h-screen w-full bg-black flex items-center justify-center"
+      ref={typingRef}
     >
       <div className="text-center px-4">
         <motion.h1
