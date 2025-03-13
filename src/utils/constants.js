@@ -1,6 +1,12 @@
 import bankpic from "./hey-bank.png";
 
 
+export const serviceId = "service_9t03dyq"
+export const templateId = "template_ri4x5zk"
+export const publicKey = "7ES9lnVC_fEKcyooK"
+
+
+
 export const skills = [
     // Front-End Development
     { name: "React JS", icon: "https://static-00.iconduck.com/assets.00/react-icon-2048x2048-o8k3ymqa.png" },

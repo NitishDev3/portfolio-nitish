@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { publicKey, serviceId, templateId } from "../utils/constants";
 
 const ContactMe = () => {
   const form = useRef();
@@ -10,10 +11,10 @@ const ContactMe = () => {
 
     emailjs
       .sendForm(
-        process.env.EMAILJS_SERVICE_ID, // Replace with your EmailJS Service ID
-        process.env.EMAILJS_TEMPLATE_ID, // Replace with your EmailJS Template ID
+        serviceId, // Replace with your EmailJS Service ID
+        templateId, // Replace with your EmailJS Template ID
         form.current,
-        process.env.EMAILJS_PUBLIC_KEY // Replace with your EmailJS Public Key
+        publicKey // Replace with your EmailJS Public Key
       )
       .then(
         (result) => {
