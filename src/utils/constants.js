@@ -1,5 +1,5 @@
 import bankpic from "./hey-bank.png";
-
+import connectifypic from "./connectify.png";
 
 export const serviceId = "service_9t03dyq"
 export const templateId = "template_ri4x5zk"
@@ -57,9 +57,9 @@ export const projects = [
     },
     {
         title: "Connectify",
-        description: "A vibrant social media app that brings people together, featuring interactive drag-and-drop functionality for a truly engaging user interface.",
-        image: "project3.png",
-        link: "https://example.com/project3",
-        techStack: ["React", "Drag-and-Drop"],
+        description: "A vibrant social media app that brings people together, featuring interactive functionality for a truly engaging user interface.",
+        image: connectifypic,
+        link: "https://connectify-gray-delta.vercel.app/",
+        techStack: ["React", "Tailwind CSS", "MERN"],
     },
 ];
